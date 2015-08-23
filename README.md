@@ -8,7 +8,7 @@
   <li>Merge Sort</li>
   <li>Quick Sort</li>
   <li>Heap Sort</li>
-  <li>Bouble Sort</li>
+  <li>Bubble Sort</li>
 </ol>
 
 ### Trees
