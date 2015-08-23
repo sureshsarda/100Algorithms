@@ -1,3 +1,15 @@
+/*
+  BUBBLE SORT
+  author: Suresh Sarda
+
+  Intution:
+  The intution for this algorithm is that at every pass, adjacent elements are compared and the elements are swapped, if a swap is required
+  FOr example, if we want to sort in ascending order and 2 number are in order of larger and smaller, then a swap is required and we will swap them
+  But if the numbers are smaller first and larger later, then we will keep them the way they are.
+
+  If we iterate over it n times, the array will be sorted.
+*/
+
 #include<stdio.h>
 
 void printArray(int * arrayToPrint, int size);
@@ -26,11 +38,20 @@ void swap(int *num1, int *num2) {
 }
 
 void bubbleSort(int *array, int size) {
+  int i = 0; //iterations
+  int j = 0; //index in array
+
+  for (i = 0; i < size; i++) {
+    for (j = 0; j < size - i - 1; j++) {
+      if (array[j] > array[j + 1]) {
+	swap(&array[j], &array[j + 1]);
+      }
+    }
+  }
+}
+void insertionSort(int *array, int size) {
   int i = 0;
 
-  // The ligheter numbers bubble up or come in front.
-  // So what needs to be done is compare and swap the number to previous number till
-  // the number comes to its correct position.
   for (i = 1; i < size; i++) {
     int j = i;
     while(array[j - 1] > array[j]) {
@@ -39,3 +60,4 @@ void bubbleSort(int *array, int size) {
     }
   }
 }
+
