@@ -14,26 +14,37 @@ def levenshtein(str1, str2):
 
     len1 = len(string1)
     len2 = len(string2)
-    
-    matrix = [[0 for x in range(len1)] for x in range(len2)]
-    
-    for i in range(0, len1):
-        matrix[0][i] = i
-    
-    for j in range(0, len2):
-        matrix[j][0] = j
 
-    for i in range(1, len1 + 1):
-        for j in range(1, len2 + 1):
+    # 1 more than length to accomodate the extra values of plain insertion and deletions
+    matrix = [[0 for x in range(len2 + 1)] for x in range(len1 + 1)]
+    
+    # First column
+    for i in range(len1 + 1):
+        matrix[i][0] = i
+    
+    # First Row    
+    for j in range(len2 + 1):
+        matrix[0][j] = j
+
+    # The main matrix, starts at 1,1 and ends at len
+    for i in range(len1):
+        for j in range(len2):
             if str1[i] == str2[j]:
-                matrix[i][j] = matrix[i-1][j-1]
+                matrix[i + 1][j + 1] = matrix[i][j] # Copy the diagonal element as it is
             else:
-                print i, j
-                matrix[i][j] = min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + 1)
+                matrix[i + 1][j + 1] = min([matrix[i][j + 1] + 1, matrix[i + 1][j] + 1, matrix[i][j] + 1])
 
-    printMatrix(matrix)
+#   printMatrix(matrix)        
+
+    costlist = []
+    for i in range(len1 + 1):
+        costlist.append(matrix[i][len2])
+    costlist = costlist + matrix[len1]
+
+    return min(costlist)
 
 string1 = "iterative"
-string2 = "irretative"
+string2 = "irr"
 
-levenshtein(string1, string2)
+distance = levenshtein(string1, string2)
+print "Edit distance is ", distance
