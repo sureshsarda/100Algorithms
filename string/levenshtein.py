@@ -1,3 +1,5 @@
+from sys import argv
+
 def printMatrix(matrix):
     len1 = len(matrix)
     len2 = len(matrix[0])
@@ -39,8 +41,8 @@ def levenshtein(str1, str2):
 
     return min(costlist)
 
-string1 = raw_input("Enter First String: ")
-string2 = raw_input("Enter Second String: ")
+string1 = argv[1]
+string2 = argv[2]
 
 distance = levenshtein(string1, string2)
 print "Edit distance is:", distance
