@@ -8,10 +8,6 @@ def printMatrix(matrix):
         print ""
 
 def levenshtein(str1, str2):
-    print "String One:", str1
-    print "String Two:", str2
-    print "Calculating Edit Distance..."
-
     len1 = len(string1)
     len2 = len(string2)
 
@@ -43,8 +39,8 @@ def levenshtein(str1, str2):
 
     return min(costlist)
 
-string1 = "iterative"
-string2 = "irr"
+string1 = raw_input("Enter First String: ")
+string2 = raw_input("Enter Second String: ")
 
 distance = levenshtein(string1, string2)
-print "Edit distance is ", distance
+print "Edit distance is:", distance
