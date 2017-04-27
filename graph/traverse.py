@@ -8,7 +8,7 @@ def traverse_bfs(graph):
     while remaining:
         current = remaining.popleft()
         sequence.append(current)
-        for i, item in enumerate(graph[current]):
+        for i, item in enumerate(graph[current]):  # Add not added, not visited entries
             if item and i not in sequence and i not in remaining:
                 remaining.append(i)
     return sequence
@@ -20,7 +20,7 @@ def traverse_dfs(graph):
     while remaining:
         current = remaining.pop()
         sequence.append(current)
-        for i, item in enumerate(graph[current]):
+        for i, item in enumerate(graph[current]):  # Add not added, not visited entries
             if item and i not in sequence and i not in remaining:
                 remaining.append(i)
     return sequence

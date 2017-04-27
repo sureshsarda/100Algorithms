@@ -6,8 +6,8 @@ def printMatrix(matrix):
     
     for i in range(0, len1):
         for j in range(0, len2):
-            print matrix[i][j],
-        print ""
+            print(matrix[i][j], sep='')
+        print('')
 
 def levenshtein(str1, str2):
     len1 = len(string1)
@@ -45,4 +45,4 @@ string1 = argv[1]
 string2 = argv[2]
 
 distance = levenshtein(string1, string2)
-print "Edit distance is:", distance
+print("Edit distance is: {0}".format(distance))
