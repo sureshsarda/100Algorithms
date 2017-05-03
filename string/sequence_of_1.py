@@ -4,6 +4,14 @@ Problem Statement
 
 Given a string of 1s and 0s, find the longest sub-string of 1s
 
+Algorithm
+=========
+
+Every time we encounter a 1 while traversing the string, start measuring it. Once it is over (0 is found) reset current
+values and if this length was greater than the already we found then update the max length found. Otherwise discard
+current results
+
+
 Complexity
 ==========
 O(n)
@@ -19,8 +27,12 @@ def max_sequence(l):
     :param l: list of 1s and 0s
     :return: length of sequence, start position 
     """
+
+    # Store the max start and length found till now
     max_start = 0
     max_length = 0
+
+    # Store values for current string we are considering
     current_length = 0
     current_start = 0
 
@@ -33,13 +45,13 @@ def max_sequence(l):
             current_length += 1
         else:
             if current_length > max_length:
+                # Update max_length and it's start value
                 max_length = current_length
                 max_start = current_start
-                current_length = 0
-                current_start = 0
-            else:
-                current_length = 0
-                current_start = 0
+
+            # Reset current for next substring
+            current_length = 0
+            current_start = 0
 
     return max_length, max_start
 
